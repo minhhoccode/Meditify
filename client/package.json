@@ -1,0 +1,36 @@
+{
+  "name": "meditify",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "express": "^4.18.1",
+    "medium-editor": "^5.23.3",
+    "mongoose": "^6.4.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
+    "responsive-navbar-react": "^1.2.1",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "json-loader": "^0.5.7",
+    "node-sass": "^7.0.1",
+    "sass": "^1.52.3",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.9"
+  }
+}

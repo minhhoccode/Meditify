@@ -1,0 +1,57 @@
+.SideBar {
+  flex: 3;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
+  background-size: cover;
+  //make it always has space in the left 4px
+  padding-left: 4px;
+  text-align: center;
+
+  //make it always has space in the right 4px
+}
+#TopHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(20px);
+  font-size: 1.5em;
+}
+
+@media (max-width: 840px) {
+  .SideBar {
+    display: none;
+  }
+}
+.image-small {
+  width: 1.5em;
+  height: 1.5em;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.small-flex {
+  display: flex;
+}
+.author-name-small {
+  font-size: 1em;
+  margin-left: 0px;
+}
+.small-card {
+  height: 70px;
+  text-align: left;
+  border-radius: 8px;
+  //cast shadow
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 10px;
+}
+.title-small {
+  height: -webkit-fill-available;
+
+  // text-align: left;
+  text-align: left;
+  font-size: 1.2em;
+  font-weight: bold;
+  max-width: 90%;
+}

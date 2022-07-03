@@ -1,0 +1,9 @@
+//import var.scss
+@import '../../components/variables.scss';
+
+.home{
+    margin-top: 40px;
+    display: flex;
+    background-color: $background-color;
+}
+
