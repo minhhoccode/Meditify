@@ -14,7 +14,7 @@
       "category": "Drama",
       "content": "Two imprisoned Redemption for the Shawshank Redemption (1994) is a crime drama film directed by Frank Darabont and written by Stephen King. The film stars Tim Robbins in the role of Red, who is sentenced to life in Shawshank State Penitentiary, where he must remain under sentence",
       "view": 14,
-      "like": 10
+      "vote": 10
     },
     {
       "title": "The Godfather",
@@ -29,7 +29,7 @@
       "category": "Drama",
       "content": "The Godfather (1972) is a crime drama film directed by Francis Ford Coppola and written by Mario Puzo. The film stars Marlon Brando in the role of Don Vito Corleone, the head of the Corleone crime family. The film is based on the novel of the same name by Mario Puzo",
       "view": 16,
-      "like": 5
+      "vote": 5
     },
     {
       "title": "The Dark Knight",
@@ -44,7 +44,7 @@
       "category": "Drama",
       "content": "The Dark Knight (2008) is a superhero film directed by Christopher Nolan and written by David S. Goyer. The film stars Christian Bale in the role of Batman, and is based on the DC Comics character of the same name. The film is the second installment in the DC Extended Universe (DCEU)",
       "view": 20,
-      "like": 16
+      "vote": 16
     }
   ]
 }

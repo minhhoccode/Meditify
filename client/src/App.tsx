@@ -1,6 +1,6 @@
-import { useState } from "react";
+// import { useState } from "react";
+// import Header from "./components/header/Header";
 import TopBar from "./components/topBar/topBar";
-import Header from "./components/header/Header";
 import Home from "./pages/home/home";
 import SinglePage from "./pages/singlePost/single";
 import Write from "./pages/write/Write";
@@ -9,6 +9,7 @@ import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import NotFound from "./pages/404/NotFound";
 import Footer from "./components/footer/Footer";
+// import Blog from "./pages/editor/Blog";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import "./app.scss";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element = {<Home/>}/>
           <Route path="/posts" element = {<Home/>} />
           <Route path="/Home" element = {<Home/>} />
+          {/* <Route path="/logout" element = {<Blog/>} /> */}
           <Route path="/register" element = {currentUser ? <Home /> : <Register />} />
           <Route path="/login" element = {currentUser ? <Home /> : <Login />} />
           <Route path="/post/:id" element = {<SinglePage/>} />
@@ -31,7 +33,8 @@ function App() {
           <Route path="/settings" element = {currentUser ? <Setting /> : <Login />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>
-        <Footer />
+         
+         <Footer />
       </Router>
     </>
   );

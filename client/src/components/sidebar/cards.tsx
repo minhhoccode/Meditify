@@ -1,5 +1,5 @@
 import React from "react";
-import "./sideBar.scss";
+import "./cards.scss";
 
 export default function cards(props: any) {
   return (
@@ -7,10 +7,10 @@ export default function cards(props: any) {
       <div className="small-card">
         <div className="small-flex">
           <img src={props.img} className="image-small" />
-          <p className="author-name-small">{props.author.name}</p>
+          <h5 className="author-name-small">{props.author.name}</h5>
         </div>
-        <a href={props.url}>
-          <h1 className="title-small">{props.title}</h1>
+        <a href={props.title}>
+          <h4 className="title-small">{props.title}</h4>
         </a>
       </div>
     </>

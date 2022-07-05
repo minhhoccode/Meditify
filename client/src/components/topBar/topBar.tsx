@@ -30,16 +30,16 @@ export default function TopBar(): JSX.Element {
       <nav id="navbar" className="">
         <div className="nav-wrapper">
           <div className="logo">
-            <a href="home">
+            <a href="http://localhost:3000/home">
               <i className="fa fa-angellist"></i> MEDITIFY
             </a>
           </div>
           <ul id="menu">
             <li>
-              <a href="home">Home</a>
+              <a href="http://localhost:3000/home">Home</a>
             </li>
             <li>
-              <a href="write">write</a>
+              <a href="http://localhost:3000/write">write</a>
             </li>
             <li>
               <a href="Logout">Logout</a>
@@ -48,7 +48,7 @@ export default function TopBar(): JSX.Element {
         </div>
       </nav>
       <div className="topRight">
-          <a href="settings">
+          <a href="http://localhost:3000/settings">
           <img
           src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/279893737_1133317790857101_3263187200603410640_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=174925&_nc_ohc=GvpI3uWUSDkAX_1BXOv&_nc_ht=scontent.fhan5-9.fna&oh=00_AT9xaBspykRR2JRzf2kDTiBH9RHDquXWrgGM0oNcFDnEzw&oe=62C576CF"
           width="200"

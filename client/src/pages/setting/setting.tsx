@@ -33,19 +33,14 @@ export default function setting() {
                 </p> */}
                 <div className="user-bio">
                   <h3>Bio</h3>
-                  <p className="bio">
-                    Lorem ipsum dolor sit amet, hello how consectetur
-                    adipisicing elit. Sint consectetur provident magni yohoho
-                    consequuntur, voluptatibus ghdfff exercitationem at quis
-                    similique. Optio, amet!
-                  </p>
+                  <p className="bio">Em cho anh thay doa moi no co nhau nay?</p>
                 </div>
                 <div className="profile-btn">
                   <button className="bluebtn" id="editBtn">
-                    <i className="fa fa-comment"></i> Edit profile
+                    <i className="fa fa-comment"></i> <span>Edit profile</span>
                   </button>
                   <button className="bluebtn" id="Create-post">
-                    <i className="fa fa-plus"></i> Create
+                    <i className="fa fa-plus"></i> <span>Create</span>
                   </button>
                 </div>
               </div>

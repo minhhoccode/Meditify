@@ -60,10 +60,8 @@
   justify-content: space-between;
 }
 #tags{
-  //make it has space between them 6px excepts the fist
   margin-left: 6px;
   transform: translateX(-6px);
-  //make it center
   display: flex;
   flex-direction: row;
   align-items: center;

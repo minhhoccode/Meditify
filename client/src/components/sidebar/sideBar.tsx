@@ -1,26 +1,92 @@
 import "./sideBar.scss";
 import Cards from "./cards";
+import data from "../../../data.json";
 
 export default function SideBar() {
+  const Blog = data.Blog;
+
+  const tagss = [
+    "Love",
+    "Wellness",
+    "Health",
+    "Language learning",
+    "Food",
+    "Travel",
+  ];
+  const tags = tagss.map((tag: any) => {
+    return (
+      <a href={tag} id="SidebarTags">
+        <span key={tag} className="Md-card-badge card-badge-blue">
+          {tag}
+        </span>
+      </a>
+    );
+  });
+  const Thread = ["Love", "Wellness", "Health"];
+  const threads = Thread.map((tag: any) => {
+    return (
+      <a href={tag} id="SidebarTags">
+        <span key={tag} className="Md-card-badge card-badge-blue">
+          {tag}
+        </span>
+      </a>
+    );
+  });
   return (
     <>
       <div className="SideBar">
         <div className="sidebarItem">
-          <p className="TopHead">What we are reading today</p>
-          <Cards
-            img="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-            title="The Future of Work"
-            url="The Future of Work"
-            author={{ name: "John Doe" }}
-          />
+          <h3 className="TopHead">Recommended topics</h3>
+          <div className="SB-Mg">{tags}</div>
 
-          {/* another card */}
-          <Cards
-            title="in the sky"
-            url="in the sky"
-            img="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-            author={{ name: "John Doe" }}
-          />
+          <div className="border"></div>
+          <h3 className="TopHead">⚫ Top read in day</h3>
+          {Blog.map((post: any) => {
+            return (
+              <Cards
+                key={post.id}
+                title={post.title}
+                img={post.image}
+                author={post.author}
+                date={post.date}
+              />
+            );
+          })}
+          <a href="TopRead" className="DownHead">
+            See the full list
+          </a>
+          <div className="border"></div>
+          <h3 className="TopHead">⚫ Top Comment in day</h3>
+          {Blog.map((post: any) => {
+            return (
+              <Cards
+                key={post.id}
+                title={post.title}
+                img={post.image}
+                author={post.author}
+                date={post.date}
+              />
+            );
+          })}
+          <a href="TopRead" className="DownHead">
+            See the full list
+          </a>
+          <div className="border"></div>
+          <h3 className="TopHead">⚫ Top Vote in day </h3>
+          {Blog.map((post: any) => {
+            return (
+              <Cards
+                key={post.id}
+                title={post.title}
+                img={post.image}
+                author={post.author}
+                date={post.date}
+              />
+            );
+          })}
+          <a href="TopRead" className="DownHead">
+            See the full list
+          </a>
         </div>
       </div>
     </>

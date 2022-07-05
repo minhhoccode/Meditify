@@ -1,9 +1,35 @@
 //import var.scss
-@import '../../components/variables.scss';
+@import "../../components/variables.scss";
 
-.home{
-    margin-top: 40px;
-    display: flex;
-    background-color: $background-color;
+.home {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  box-sizing: inherit;
+  margin: auto;
+  background-color: $background-color;
+  max-width: 1504px;
 }
 
+.HomeBorder {
+  max-width: 900px;
+  flex: 7;
+  border-right: 1px solid #b9b9b9;
+  padding-right: 50px;
+  margin-top: var(--topbar-height);
+  justify-content: center;
+}
+.sidebarBorder{
+  max-width: 330px;
+    flex: 2;
+}
+@media screen and (max-width: 900px) {
+  .HomeBorder {
+    width: 100%;
+    padding-right: 0px;
+    border-right: none;
+  }
+  .sidebarBorder{
+    display: none;
+  }
+}
