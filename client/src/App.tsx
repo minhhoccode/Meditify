@@ -23,12 +23,13 @@ function App() {
         <TopBar />
         <Routes>
           <Route path="/" element = {<Home/>}/>
-          <Route path="/posts" element = {<Home/>} />
+          <Route path="/post" element = {<Home/>} />
           <Route path="/Home" element = {<Home/>} />
           {/* <Route path="/logout" element = {<Blog/>} /> */}
           <Route path="/register" element = {currentUser ? <Home /> : <Register />} />
           <Route path="/login" element = {currentUser ? <Home /> : <Login />} />
-          <Route path="/post/:id" element = {<SinglePage/>} />
+          {/* <Route path="/post/:id" element = {<SinglePage/>} /> */}
+          <Route path="/post/" element = {<SinglePage/>} />
           <Route path="/write" element = {currentUser ? <Write /> : <Login />} />
           <Route path="/settings" element = {currentUser ? <Setting /> : <Login />} />
           <Route path="*" element={<NotFound/>}/>

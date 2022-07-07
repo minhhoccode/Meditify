@@ -44,7 +44,7 @@ export default function SideBar() {
           {Blog.map((post: any) => {
             return (
               <Cards
-                key={post.id}
+                key={post._id}
                 title={post.title}
                 img={post.image}
                 author={post.author}
@@ -60,7 +60,7 @@ export default function SideBar() {
           {Blog.map((post: any) => {
             return (
               <Cards
-                key={post.id}
+                key={post._id}
                 title={post.title}
                 img={post.image}
                 author={post.author}
@@ -72,11 +72,11 @@ export default function SideBar() {
             See the full list
           </a>
           <div className="border"></div>
-          <h3 className="TopHead">⚫ Top Vote in day </h3>
+          <h3 className="TopHead">⚫ Top like in day </h3>
           {Blog.map((post: any) => {
             return (
               <Cards
-                key={post.id}
+                key={post._id}
                 title={post.title}
                 img={post.image}
                 author={post.author}

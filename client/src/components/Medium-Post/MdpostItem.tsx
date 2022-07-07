@@ -3,14 +3,11 @@ import React from "react"
 export default function MdPostItem(props: any) {
   const tags = props.tags.map((tag: any) => {
     return (
-      <React.Fragment key={tag}>
-        <a key={tag} href={tag} className="tags">
-          <span className="Md-card-badge card-badge-blue">
-            {tag}
-          </span>
-        </a>
-      </React.Fragment>
-
+      <a className="tags" key={tag}>
+        <span className="Md-card-badge card-badge-blue">
+          {tag}
+        </span>
+      </a>
     );
   });
 
@@ -19,14 +16,13 @@ export default function MdPostItem(props: any) {
       <div className="MdItemPost">
         <div className="flex">
           <img src={props.author.img} alt="" className="MdItemAuthorImg" />
-          <a href="">
-            {" "}
+          <a href={props.author.name}>
             <p className="authorName">{props.author.name}</p>
           </a>
         </div>
         <div className="MdItempost">
           <div className="flex1">
-            <a href={'Blog/' + props.author.name + '/' + props.title }>
+            <a href={'Blog/' + props.author.name + '/' + props.title}>
               <h2 className="MdItemTitle">{props.title}</h2>
             </a>
             <p className="MdItemdesc">{props.content}</p>
@@ -36,12 +32,14 @@ export default function MdPostItem(props: any) {
         <div className="bottomCat">
           <div className="category">
             <div className="space-between">
-              <a href="">{tags}</a>
+              <div>
+                {tags}
+              </div>
               <div className="MdRightBot" >
-                <div id="UpVote">
+                <div id="Uplike">
 
                   <i className="fa-solid fa-caret-up" id="View"></i>
-                  {props.vote}
+                  {props.likes}
                   {" "}
                   {" "}
                   {" "}

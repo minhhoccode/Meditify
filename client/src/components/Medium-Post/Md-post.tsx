@@ -9,8 +9,8 @@ export default function MdPost() {
             {Blog.map((item: any) => {
                 return (
                     <MdPostItem
-                        key={item.id}
-                        id={item.id}
+                        key={item._id}
+                        id={item._id}
                         title={item.title}
                         content={item.content}
                         view={item.view}
@@ -18,8 +18,7 @@ export default function MdPost() {
                         image={item.image}
                         author={item.author}
                         date={item.date}
-                        description={item.description}
-                        vote={item.vote}
+                        likes={item.likes}
                     />
                 );
             })}

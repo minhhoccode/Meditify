@@ -2,11 +2,31 @@
 
 .write {
   margin-top: var(--topbar-height);
+}
 
+.image-item__btn-wrapper {
+  transform: translateY(-24px);
+}
+#upload__image {
+  top: 160px;
+  // left: 30px;
+  position: absolute;
+  // border-radius: 10px;
+  // background-color: #fff;
+  // border: 1px solid #ccc;
+  z-index: 0;
+  // display: grid;
+}
+
+.btn-image {
+  z-index: 2;
+  position: absolute;
 }
 
 .writeImg {
-  width: 100vw;
+  z-index: 1;
+  width: 100%;
+  position: absolute;
   height: 15rem;
   margin: 0 auto;
   display: flex;
@@ -14,38 +34,27 @@
   object-fit: cover;
 }
 
-#PlusIcon {
-  color: #6f787f;
-  outline: 1px solid #6f787f;
-  font-weight: thin;
-  border-radius: 100%;
-  font-size: 27px;
-  padding: 8px;
-  width: 27px;
-  height: 27px;
-  line-height: 27px;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease-out;
-
-  //hover
-  &:hover {
-    outline: 1px solid #000000;
-    color: #000;
-    -webkit-transform: rotateZ(-180deg);
-    -ms-transform: rotateZ(-180deg);
-    transform: rotateZ(-180deg);
-    transition: all 0.2s;
-    box-shadow: inset 0 0 0 25px #a8cacd3c;
-  }
+#title[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
 }
 .writeInput {
+  width:calc(100vw - 120px);
+  resize: vertical;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  white-space: pre-wrap;
   margin-top: 20px;
   border: none;
-  width: 90%;
-  font-size: 30px;
+  // overflow-y: visible;
+  font-size: 26px;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin: 0 40px;
+  // width: 100%;
+  margin-bottom: 23px;
+}
+.ImagePlace {
+  height: 260px;
 }
 
 .writeTextarea {
@@ -57,9 +66,9 @@
 }
 
 .writeFormGroup {
-  width: 70vw;
-  //center the form
   margin: 0 auto;
+  width: 90%;
+  max-width: 800px;
 }
 .writeInput:focus {
   outline: none;
@@ -69,25 +78,32 @@
   outline: none;
 }
 .writeSubmit {
-  width: 70%;
-  background-color: var(--blue-bg);
-  color: #fff;
-  font-size: 20px;
+  border-radius: 10px;
+  position: fixed;
+  top: 80px;
+  right: 10px;
+  background-color: #fff;
+  z-index: 1;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  padding: 8.5px 7px 8.5px 7px;
   font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease-out;
-  //center
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-
-  //hover
+  // hover
   &:hover {
-    background-color: var(--blue-bg-hover);
-    transition: all 0.2s;
+    color: rgb(0, 102, 204);
+    border: 1px solid #a8cacd3c;
+    transition: all 0.15s;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .writeFormGroup {
+    width: 96%;
+    margin-left: auto;
+  }
+  .writeInput{
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+
