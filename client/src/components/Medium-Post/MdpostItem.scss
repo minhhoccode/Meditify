@@ -5,7 +5,9 @@ $MdItemCardImg: 140px;
 .flex {
   display: flex;
 }
+
 .MdItemPost {
+  max-width: 100vw;
   margin-left: 2rem;
   margin-top: 30px;
   padding-bottom: 30px;
@@ -43,24 +45,22 @@ $MdItemCardImg: 140px;
   max-width: 100vw;
 }
 .authorName {
-  margin: 10px;
-  flex: 1 1 0%;
   font-size: 0.8em;
 }
 .MdItemAuthorImg {
   width: $author;
   height: $author;
   object-fit: cover;
-  aspect-ratio: auto 30 / 30;
   border-radius: 50%;
+  aspect-ratio: 30 / 30;
 }
 .MdItemCardImg {
   width: $MdItemCardImg;
   height: $MdItemCardImg;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 10%;
   padding: 10px;
-  aspect-ratio: auto 140 / 140;
+  aspect-ratio: 1 / 1;
   margin: 10px;
 }
 .MdItemTitle {
@@ -73,7 +73,9 @@ $MdItemCardImg: 140px;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: justify;
   display: -webkit-box;
+  max-width:100vw;
 }
 
 .tags {

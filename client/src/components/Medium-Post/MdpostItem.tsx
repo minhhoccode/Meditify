@@ -1,5 +1,5 @@
 import "./MdpostItem.scss";
-import React from "react"
+import { Link } from 'react-router-dom';
 export default function MdPostItem(props: any) {
   const tags = props.tags.map((tag: any) => {
     return (
@@ -15,19 +15,19 @@ export default function MdPostItem(props: any) {
     <>
       <div className="MdItemPost">
         <div className="flex">
-          <img src={props.author.img} alt="" className="MdItemAuthorImg" />
-          <a href={props.author.name}>
-            <p className="authorName">{props.author.name}</p>
+          {/* <img src={props.author.img} alt="" className="MdItemAuthorImg" /> */}
+          <a href={props.author}>
+            <p className="authorName">{props.author}</p>
           </a>
         </div>
         <div className="MdItempost">
           <div className="flex1">
-            <a href={'Blog/' + props.author.name + '/' + props.title}>
+            <Link to={`/post/${props.id}`}>
               <h2 className="MdItemTitle">{props.title}</h2>
-            </a>
-            <p className="MdItemdesc">{props.content}</p>
+            </Link>
+            <p className="MdItemdesc">{props.content.slice(0,200)}</p>
           </div>
-          <img src={props.image} alt="" className="MdItemCardImg" />
+          <img src={props.image ? props.image : "https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60"} alt="" className="MdItemCardImg" />
         </div>
         <div className="bottomCat">
           <div className="category">

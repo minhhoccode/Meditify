@@ -41,6 +41,9 @@ export default class EditorDemo extends Component<any, any> {
                 <button className="ql-strike"></button>
                 <button className="ql-image"></button>
                 <button className="ql-video"></button>
+                <button className="ql-align" value="center"></button>
+                <button className="ql-align" value="left"></button>
+                <button className="ql-align" value="right"></button>
                 <button className="ql-code-block"></button>
                 <button className="ql-blockquote"></button>
             </span >
@@ -103,8 +106,12 @@ export default class EditorDemo extends Component<any, any> {
                         headerTemplate={header}
                         // theme = {this.theme}
                         value={this.state.text2}
+                        // onTextChange={(e) => this.setState({
+                        //     text2: e.htmlValue
+                        // })}
+                        // make  an event onTextChange if text 2 is change and replace <script> to <p><script></p>
                         onTextChange={(e) => this.setState({
-                            text2: e.htmlValue
+                            text2: e.htmlValue?.replace(/<script>/g, "<p><script></p>")
                         })}
                     />
                     <div className="border" id="scroll" ></div>

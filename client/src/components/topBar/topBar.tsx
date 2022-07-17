@@ -70,7 +70,7 @@ export default function TopBar(): JSX.Element {
             <a href="home">Home</a>
           </li>
           <li>
-            <a href="write">write</a>
+            <a href="http://localhost:3000/write">write</a>
           </li>
           <li>
             <a href="Logout">Logout</a>

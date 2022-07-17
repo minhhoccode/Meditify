@@ -29,7 +29,7 @@ function App() {
           <Route path="/register" element = {currentUser ? <Home /> : <Register />} />
           <Route path="/login" element = {currentUser ? <Home /> : <Login />} />
           {/* <Route path="/post/:id" element = {<SinglePage/>} /> */}
-          <Route path="/post/" element = {<SinglePage/>} />
+          <Route path="/post/:id" element = {<SinglePage/>} />
           <Route path="/write" element = {currentUser ? <Write /> : <Login />} />
           <Route path="/settings" element = {currentUser ? <Setting /> : <Login />} />
           <Route path="*" element={<NotFound/>}/>

@@ -9,7 +9,6 @@ export default function SideBar() {
     "Love",
     "Wellness",
     "Health",
-    "Language learning",
     "Food",
     "Travel",
   ];
@@ -25,7 +24,7 @@ export default function SideBar() {
   const Thread = ["Love", "Wellness", "Health"];
   const threads = Thread.map((tag: any) => {
     return (
-      <a href={tag} id="SidebarTags">
+      <a href={tag} key={tag} id="SidebarTags">
         <span key={tag} className="Md-card-badge card-badge-blue">
           {tag}
         </span>
@@ -38,7 +37,6 @@ export default function SideBar() {
         <div className="sidebarItem">
           <h3 className="TopHead">Recommended topics</h3>
           <div className="SB-Mg">{tags}</div>
-
           <div className="border"></div>
           <h3 className="TopHead">⚫ Top read in day</h3>
           {Blog.map((post: any) => {

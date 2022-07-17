@@ -39,13 +39,23 @@ p {
   color: rgba(var(--gray-800), 1);
   font-size: 18px;
   line-height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  img {
+    max-width: 100%;
+    border-radius: 5%;
+  }
+  p {
+    text-align: justify;
+  }
 }
 
-.single-post-content::first-letter {
-  margin-left: 20px;
-  font-size: 30px;
-  font-weight: 100;
-}
+// .single-post-content::first-letter {
+//   margin-left: 20px;
+//   font-size: 30px;
+//   font-weight: 100;
+// }
+
 .single-post-info {
   display: flex;
   //space-between
@@ -59,11 +69,9 @@ p {
   color: #666;
 }
 
-//if media > 500px
-@media (min-width: 800px) {
+@media (min-width: 1300px) {
   .single-blog {
-    width: 50%;
-    //center
+    width: 60%;
     margin: 0 auto;
   }
   .blog-img {
