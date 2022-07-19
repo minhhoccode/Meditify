@@ -7,7 +7,7 @@ export default function setting() {
           <div className="profile-header">
             <div className="profile-img">
               <img
-                src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/279893737_1133317790857101_3263187200603410640_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=174925&_nc_ohc=GvpI3uWUSDkAX_1BXOv&_nc_ht=scontent.fhan5-9.fna&oh=00_AT9xaBspykRR2JRzf2kDTiBH9RHDquXWrgGM0oNcFDnEzw&oe=62C576CF"
+                src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/289820690_1169498503905696_8964521785217033435_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=OZWo4MvQK04AX-aZ8qm&_nc_ht=scontent.fhan5-9.fna&oh=00_AT_4_xx2fGNfwYtz5UxhjyDMj8DwXdhKIPcPSZ0ulUzkFA&oe=62D9373C"
                 width="200"
                 alt="Profile Image"
               />
@@ -61,7 +61,7 @@ export default function setting() {
                 <label>Profile Picture</label>
                 <div className="settingsPP">
                   <img
-                    src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/279893737_1133317790857101_3263187200603410640_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=174925&_nc_ohc=GvpI3uWUSDkAX_1BXOv&_nc_ht=scontent.fhan5-9.fna&oh=00_AT9xaBspykRR2JRzf2kDTiBH9RHDquXWrgGM0oNcFDnEzw&oe=62C576CF"
+                    src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/289820690_1169498503905696_8964521785217033435_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=OZWo4MvQK04AX-aZ8qm&_nc_ht=scontent.fhan5-9.fna&oh=00_AT_4_xx2fGNfwYtz5UxhjyDMj8DwXdhKIPcPSZ0ulUzkFA&oe=62D9373C"
                     width="200"
                     alt="Profile Image"
                   />
@@ -76,11 +76,11 @@ export default function setting() {
                   />
                 </div>
                 <label>Username</label>
-                <input type="text" placeholder="Safak" name="name" />
+                <input type="text" placeholder="hoaphanh" name="name" />
                 <label>Email</label>
                 <input
                   type="email"
-                  placeholder="safak@gmail.com"
+                  placeholder="hoaphanh@gmail.com"
                   name="email"
                 />
                 <label>Password</label>

@@ -1,8 +1,8 @@
 @import "../../components/variables.scss";
 
-.write {
-  margin-top: var(--topbar-height);
-}
+// .write {
+//   margin-top: 200px;
+// }
 
 .image-item__btn-wrapper {
   transform: translateY(-24px);
@@ -24,14 +24,13 @@
 }
 
 .writeImg {
-  z-index: 1;
   width: 100%;
-  position: absolute;
-  height: 15rem;
+  height: 30vh;
   margin: 0 auto;
   display: flex;
   align-items: center;
   object-fit: cover;
+
 }
 
 #title[placeholder]:empty:before {
@@ -39,7 +38,7 @@
   color: #555;
 }
 .writeInput {
-  width:calc(100vw - 120px);
+  width:calc(100vw - 240px);
   resize: vertical;
   box-sizing: border-box;
   word-wrap: break-word;

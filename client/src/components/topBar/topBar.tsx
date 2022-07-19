@@ -1,18 +1,19 @@
 import "./topBar.scoped.scss";
 import { useState, useEffect, useRef } from "react";
-
+import { useSelector } from "react-redux";
 // rfc
 
-export default function TopBar(): JSX.Element {
+export default function TopBar(props: any): JSX.Element {
   const [isActive, setIsActive] = useState(false);
-
+  const user = useSelector((state: any) => state.user);
+  var login = props.login;
   const handleClick = (event: any) => {
     var menuu = document.getElementById("menuu");
     if (menuu !== null) {
       if (menuu.style.transform != "translateX(0%)") {
         menuu.style.transform = "translateX(0%)";
       } else {
-        menuu.style.transform = "translateX(-100%)";
+        menuu.style.transform = "translateX(-150%)";
       }
     }
     var toggleIcon = document.getElementById("menuIcon");
@@ -24,6 +25,10 @@ export default function TopBar(): JSX.Element {
       }
     }
   };
+  const logout = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  }
 
   return (
     <div className="top">
@@ -41,22 +46,35 @@ export default function TopBar(): JSX.Element {
             <li>
               <a href="http://localhost:3000/write">write</a>
             </li>
-            <li>
+            {/* <li>
               <a href="Logout">Logout</a>
+            </li> */}
+
+            <li>
+              {
+                login ?
+                  <a onClick={logout}>Logout</a> : <a href="Login">Login</a>
+              }
             </li>
+
           </ul>
         </div>
       </nav>
       <div className="topRight">
-          <a href="http://localhost:3000/settings">
-          <img
-          src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/279893737_1133317790857101_3263187200603410640_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=174925&_nc_ohc=GvpI3uWUSDkAX_1BXOv&_nc_ht=scontent.fhan5-9.fna&oh=00_AT9xaBspykRR2JRzf2kDTiBH9RHDquXWrgGM0oNcFDnEzw&oe=62C576CF"
-          width="200"
-          alt="Profile Image"
-          className="topImg"
-        />
-          </a>
-        <i className="topIcon fa fa-search" aria-hidden="true"></i>
+        <a href="http://localhost:3000/settings">
+          {login ? <img
+            src={user.profilePic? user.profilePic : "https://scontent.fhan5-3.fna.fbcdn.net/v/t1.15752-9/120143669_390799721933583_4965595528412418109_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=ae9488&_nc_ohc=it8zitdVouwAX_mH3EK&_nc_ht=scontent.fhan5-3.fna&oh=03_AVLR5HhxfAbHbXn1IiBUmUZO9t0NgB9ULeeAp6zwaqI9Iw&oe=62FB17FC" }
+            width="200"
+            alt="Profile Image"
+            className="topImg"
+            onError={({ currentTarget }) => {
+              currentTarget.onerror = null; 
+              currentTarget.src="https://media3.giphy.com/media/3o7bu3XilJ5BOiSGic/giphy.gif";
+            }}          
+          /> : ""}
+
+        </a>
+        {login ? <i className="topIcon1 fa fa-search" aria-hidden="true"></i> : <i className="topIcon fa fa-search" aria-hidden="true"></i>}
       </div>
 
       <div className="menuIcon" id="menuIcon" onClick={handleClick}>
@@ -73,7 +91,10 @@ export default function TopBar(): JSX.Element {
             <a href="http://localhost:3000/write">write</a>
           </li>
           <li>
-            <a href="Logout">Logout</a>
+            {
+              login ?
+                <a onClick={logout}>Logout</a> : <a href="Login">Login</a>
+            }
           </li>
         </ul>
       </div>

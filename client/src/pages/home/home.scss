@@ -13,6 +13,7 @@
 
 .HomeBorder {
   max-width: 900px;
+  min-height: 90vh;
   flex: 7;
   border-right: 1px solid #b9b9b9;
   padding-right: 50px;
@@ -28,8 +29,29 @@
     width: 100%;
     padding-right: 0px;
     border-right: none;
+    min-height: 120vh;
   }
   .sidebarBorder{
     display: none;
+  }
+  .footer {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .HomeBorder {
+    font-size: 0.8rem;
+    margin-top: 0px;
+  }
+  .footer {
+    display: none;
+  }
+  .tags{
+    margin : 5px;
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+  #Uplike{
+    font-size: 0.8rem;
   }
 }

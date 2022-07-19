@@ -63,6 +63,11 @@
   background-repeat: no-repeat;
 }
 
+.loginButton:disabled{
+  cursor: not-allowed;
+  background: #000;
+}
+
 .login-header {
   h2 {
     font-weight: 400;
@@ -150,5 +155,10 @@
   a {
     text-decoration: none;
     color: #7366ff;
+  }
+}
+@media screen and (max-width: 768px) {
+  .login-form {
+    max-width: 80%;
   }
 }

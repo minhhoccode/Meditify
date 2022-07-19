@@ -6,7 +6,7 @@ export default function cards(props: any) {
     <>
       <div className="small-card">
         <div className="small-flex">
-          <img src={props.img} className="image-small" />
+          <img src={props.author.img} className="image-small" />
           <h5 className="author-name-small">{props.author.name}</h5>
         </div>
         <a href={props.title}>

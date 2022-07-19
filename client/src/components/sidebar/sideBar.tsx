@@ -1,22 +1,26 @@
 import "./sideBar.scss";
 import Cards from "./cards";
 import data from "../../../data.json";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function SideBar() {
   const Blog = data.Blog;
+  const [cats, setCats] = useState([]);
 
-  const tagss = [
-    "Love",
-    "Wellness",
-    "Health",
-    "Food",
-    "Travel",
-  ];
-  const tags = tagss.map((tag: any) => {
+  useEffect(() => {
+    const getCats = async () => {
+      const res = await axios.get("api/category");
+      setCats(res.data);
+    };
+    getCats();
+  }, []);
+  const tags = cats.map((tag: any) => {
+    // const tags = tagss.map((tag: any) => {
     return (
-      <a href={tag} id="SidebarTags">
-        <span key={tag} className="Md-card-badge card-badge-blue">
-          {tag}
+      <a href={"/../../?cat=" + tag.name} id="SidebarTags" key={tag.name}>
+        <span key={tag.name} className="Md-card-badge card-badge-blue">
+          {tag.name}
         </span>
       </a>
     );
@@ -24,9 +28,9 @@ export default function SideBar() {
   const Thread = ["Love", "Wellness", "Health"];
   const threads = Thread.map((tag: any) => {
     return (
-      <a href={tag} key={tag} id="SidebarTags">
-        <span key={tag} className="Md-card-badge card-badge-blue">
-          {tag}
+      <a href={tag.name} key={tag.name} id="SidebarTags">
+        <span key={tag.name} className="Md-card-badge card-badge-blue">
+          {tag.name}
         </span>
       </a>
     );

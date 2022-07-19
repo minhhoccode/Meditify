@@ -14,9 +14,7 @@ export default function home() {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/api/post" + search);
-      // const authors = await axios.get("/api/user/" + res.data[0].author);
       setPost(res.data);
-      // setAuthor(authors.data);
     }
     fetchPosts();
   }, [search]);

@@ -11,7 +11,6 @@ export default class EditorDemo extends Component<any, any> {
     private theme: string;
     constructor(props: any) {
         super(props);
-        // this.theme = props.theme;
         this.theme = "bubble";
         this.state = {
             text1: '<div>Hello World!</div><div>PrimeReact <b>Editor</b> Rocks</div><div><br></div>',
@@ -73,28 +72,11 @@ export default class EditorDemo extends Component<any, any> {
                     <div
                         onClick={() => {
                             clipboard = this.state.text2;
-                            // clipboard = clipboard
-                            //     .replace(/\\n/g, "\\n")
-                            //     .replace(/\\'/g, "\\'")
-                            //     .replace(/\\"/g, '\\"')
-                            //     .replace(/\\&/g, "\\&")
-                            //     .replace(/\\r/g, "\\r")
-                            //     .replace(/\\t/g, "\\t")
-                            //     .replace(/\\b/g, "\\b")
-                            //     .replace(/\\f/g, "\\f");
-                            // clipboard = clipboard.replaceAll(`"`, `\\"`);
                             navigator.clipboard.writeText(clipboard);
                         }}
                     >
                         Copy
                     </div>
-                    {/* <div
-                        id="title"
-                        placeholder="Title"
-                        className="writeInput"
-                        contentEditable="true"
-                        onChange={this.handleChange}
-                    /> */}
                     <textarea id="title"
                         placeholder="Title"
                         className="writeInput"

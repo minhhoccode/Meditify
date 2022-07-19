@@ -1,105 +1,136 @@
 import "./write.scss";
 import Editor from "../../components/editor/editor";
-import { useState } from "react";
-import ImageUploading, { ImageListType } from "react-images-uploading";
-
+import { useState, useRef, useLayoutEffect } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import Slider from "@material-ui/core/Slider";
 
 export default function Write() {
   var theme: string = "bubble";
   var first: boolean = true;
   const [images, setImages] = useState([]);
-  const [editorState, setEditorState] = useState("");
-
   const scrollTo = (ref: any) => {
     if (ref && ref.current /* + other conditions */) {
-      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }
-  const onChange = (
-    imageList: ImageListType,
-    addUpdateIndex: number[] | undefined
-  ) => {
-    setImages(imageList as never[]);
   };
 
+  const user = useSelector((state: any) => state.user);
+  const EditorRef = useRef<any>(null);
+  var title: string, content: string;
+  useLayoutEffect(() => {
+    if (EditorRef.current !== null) {
+      content = EditorRef.current.state.text2;
+      title = EditorRef.current.state.name;
+    }
+  }, []);
+
+  const [selectedImage, setSelectedImage] = useState();
+  const imageChange = (e: any) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
+    }
+  };
+
+  const removeSelectedImage = () => {
+    setSelectedImage(undefined);
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const newPost = {
+      username: user.username,
+      title: title,
+      desc: "",
+      photo: "",
+      content: content,
+    };
+    if (images.length > 0) {
+      const data = new FormData();
+      const filename = Date.now() + "";
+      data.append("name", filename);
+      data.append("file", images[0]);
+      newPost.photo = filename;
+      try {
+        await axios.post("/upload", data);
+      } catch (err) { }
+    }
+    try {
+      const res = await axios.post("/posts", newPost);
+      window.location.replace("/post/" + res.data._id);
+    } catch (err) { }
+  };
+  const state = {
+    img: "",
+  };
+  const [fit, setFit] = useState('');
+  var objPos: string = "center 0%";
   return (
-    <>
-      <div className="write">
-        <div className="ImagePlace">
+    <div className="write" style={selectedImage ? { marginTop: "60px" } : { marginTop: "150px" }}>
+      <form action="" className="writeForm">
+        <input type="file" name="user[image]"
+          accept="image/*"
+          onChange={imageChange}
+          id="cover-img"
+          style={{ display: "none" }}
+        />
 
-          <ImageUploading
-            value={images}
-            onChange={onChange}
-            maxNumber={2}
-            multiple={false}
-            dataURLKey={"data_url"}
-          >
-            {({
-              imageList,
-              onImageUpload,
-              onImageUpdate,
-              onImageRemove,
-              isDragging,
-              dragProps,
-            }) => (
-              <div className="upload__image-wrapper" {...dragProps}>
-                {imageList.map((image, index) => (
-                  <div key={index} className="image-item">
-                    <img
-                      style={isDragging ? { borderRadius: "30px" } : undefined}
-                      src={image["data_url"]}
-                      alt=""
-                      className="writeImg"
-                      onClick={() => onImageUpdate(index)}
-                    />
-                    <div className="image-item__btn-wrapper">
-                      <label htmlFor="upload__image" className="btn-image"><button>Upload</button></label>
-                      <button
-                        id="update"
-                        className="btn-image"
-                        style={isDragging ? { color: "red" } : undefined}
-                        onClick={() => onImageUpdate(index)}
-                      >
-                        Update
-                      </button>
-                      <button className="btn-image" onClick={() => onImageRemove(index)}>Remove</button>
-                    </div>
-                  </div>
-                ))}
-                <button
-                  id="upload__image"
-                  // style={{ display: "none" }}
-                  onClick={onImageUpload}
-                >Upload</button>
-                &nbsp;
-              </div>
-            )}
-          </ImageUploading>
-        </div>
-        <form action="" className="writeForm">
-          <div className="writeFormGroup">
+        {selectedImage && (
+          <div>
+            <img
+              src={URL.createObjectURL(selectedImage)}
+              alt="Thumb"
+              style={{ objectPosition: fit }}
+              className="writeImg"
+            />
+            <button onClick={removeSelectedImage}>Remove cover</button>
+            <br />
 
-            <input type="file" id="fileInput" style={{ display: "none" }} />
- 
           </div>
-          <div className="writeFormGroup">
-            {/* <textarea
+
+        )}
+        {/* <form action="" className="writeForm"> */}
+
+        <div className="writeFormGroup">
+
+          {/* <textarea
               placeholder="write something..."
               className="writeTextarea"
             ></textarea> */}
-            <Editor theme={theme} />
-            {/* <EditorNotion /> */}
-            {/* <Editor
+          {selectedImage && (
+            <Slider
+              defaultValue={0}
+              onChange={(e, val) => {
+                objPos = "center " + val + "%";
+                setFit(objPos);
+              }}
+              aria-label="Small"
+              valueLabelDisplay="auto"
+            />)
+          }
+          {!selectedImage && (
+            <label htmlFor="cover-img">
+              <i className="fa-solid fa-image"></i>
+              Add Cover
+            </label>
+          )}
+
+
+          <Editor theme={theme} ref={EditorRef} />
+          {/* <EditorNotion /> */}
+          {/* <Editor
               editorState={editorState}
               toolbarClassName="toolbarClassName"
               wrapperClassName="wrapperClassName"
               editorClassName="editorClassName"
               onEditorStateChange={this.onEditorStateChange}
             />; */}
-          </div>
-          <button className="writeSubmit">Publish</button>
-        </form>
-      </div>
-    </>
+
+        </div>
+        <button className="writeSubmit" onSubmit={handleSubmit}>
+          Publish
+        </button>
+      </form>
+    </div >
   );
 }

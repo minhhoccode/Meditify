@@ -11,16 +11,19 @@ import NotFound from "./pages/404/NotFound";
 import Footer from "./components/footer/Footer";
 // import Blog from "./pages/editor/Blog";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-
+import {useSelector} from 'react-redux'
 import "./app.scss";
 
 function App() {
-  const currentUser = true;
-
+  // const currentUser = true;
+  var currentUser = false;
+  const user = useSelector((state: any) => state.user);
+  if (user) {currentUser = true}
+  else {currentUser = false}
   return (
     <>
       <Router>
-        <TopBar />
+        <TopBar login={currentUser} />
         <Routes>
           <Route path="/" element = {<Home/>}/>
           <Route path="/post" element = {<Home/>} />

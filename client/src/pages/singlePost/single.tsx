@@ -42,7 +42,7 @@ export default function single() {
             {/* <span className="single-post-des">Thất tình à?. Vào đây.</span> */}
             <div className="single-post-info">
               <span className="single-post-author">
-                Author: <a href={"../../user/" + post.username}><b>{post.username}</b></a>
+                Author: <Link to={"../../?user=" + post.username}><b>{post.username}</b></Link>
               </span>
               <span className="single-post-date">
                 Upload at: <b> {new Date(post.createdAt).toDateString()}</b>

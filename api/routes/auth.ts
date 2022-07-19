@@ -15,9 +15,9 @@ router.post("/register", async (req: Request, res: Response) => {
     });
 
     const user = await newUser.save();
-    res.status(200).json(user);
+    return res.status(200).json(user);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -26,15 +26,15 @@ router.post("/register", async (req: Request, res: Response) => {
 router.post("/login", async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ username: req.body.username });
-    !user && res.status(400).json("Không tìm thấy tài khoản");
+    if (!user) return res.status(400).json("Không tìm thấy tài khoản");
 
     const validated = await bcrypt.compare(req.body.password, user.password);
-    !validated && res.status(400).json("Sai mật khẩu");
+    if(!validated) return res.status(400).json("Sai mật khẩu");
 
     const { password, ...others } = user._doc;
-    validated && user && res.status(200).json(others);
+    if(validated && user) return res.status(200).json(others);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
