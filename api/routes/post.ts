@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
+const CoverPhoto = require("../models/ImageCover");
 const Post = require("../models/Post");
 import FindImg from "../utils/getUserBasic";
 import { Request, Response } from "express";
@@ -64,11 +65,13 @@ router.delete("/:id", async (req: Request, res: Response) => {
 //GET POST
 router.get("/:id", async (req: Request, res: Response) => {
   try {
+    const coverphoto = await CoverPhoto.findOne({ post_id: req.params.id });
     const post = await Post.findById(req.params.id);
-
+    // post.CoverPhoto = coverphoto;
+    post["CoverPhoto"] = coverphoto;
     post.views += 0.5;
     await post.save();
-    res.status(200).json(post);
+    res.status(200).json({post: post, CoverPhoto: coverphoto});
   } catch (err) {
     res.status(500).json(err);
   }

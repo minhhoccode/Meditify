@@ -6,7 +6,7 @@
       "tags": ["Drama", "Crime"],
       "content": "Two imprisoned Redemption for the Shawshank Redemption (1994) is a crime drama film directed by Frank Darabont and written by Stephen King. The film stars Tim Robbins in the role of Red, who is sentenced to life in Shawshank State Penitentiary, where he must remain under sentence",
       "author": {
-        "name": "Minh Vu",
+        "name": "Leo Do",
         "img": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
       },
       "image": "https://images.unsplash.com/photo-1600429753199-5376c2738737?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGFyb3R8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60",
@@ -24,7 +24,7 @@
       "updatedAt": "2022-07-07T09:01:40.408Z",
       "tags": ["Drama"],
       "author": {
-        "name": "Minh Vu",
+        "name": "likeasong",
         "img": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
       },
       "thread": "Drama",
@@ -34,13 +34,13 @@
     },
     {
       "_id": 3,
-      "title": "Trả Giá Trong Tình Yêu",
+      "title": "Khi ca khúc Perfect vang lên đúng thời điểm",
       "image": "https://kenh14cdn.com/thumb_w/660/2018/7/20/photo-1-1532082230959761094601.jpg",
       "createdAt": "2022-07-07T09:04:54.794Z",
       "updatedAt": "2022-07-07T09:01:40.408Z",
       "tags": ["Drama"],
       "author": {
-        "name": "Minh Vu",
+        "name": "kkkkkk",
         "img": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
       },
       "thread": "Drama",

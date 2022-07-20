@@ -8,24 +8,23 @@ import "./editor.scss";
 
 
 export default class EditorDemo extends Component<any, any> {
-    private theme: string;
     constructor(props: any) {
         super(props);
-        this.theme = "bubble";
+        // this.theme = "bubble";
         this.state = {
-            text1: '<div>Hello World!</div><div>PrimeReact <b>Editor</b> Rocks</div><div><br></div>',
-            text2: '',
+            content: '',
             name: '',
         };
-    }
 
+    }
+    
     handleChange = (e: any) => {
         this.setState({
             name: e.target.value
         })
     };
     renderHeader() {
-
+        
         return (
             <span className="ql-formats">
                 <button className="ql-bold" id="ql-bold"> <h3></h3></button>
@@ -50,9 +49,12 @@ export default class EditorDemo extends Component<any, any> {
     }
 
 
-
+    
     render() {
         const header = this.renderHeader();
+        const { getData } = this.props;
+        getData(this.state);
+        // console.log(this.state);
         function scrollToTestDiv() {
             const divElement = document.getElementById("scroll");
             divElement?.scrollIntoView({ behavior: 'smooth' });
@@ -71,7 +73,7 @@ export default class EditorDemo extends Component<any, any> {
                 <div className="content-section implementation">
                     <div
                         onClick={() => {
-                            clipboard = this.state.text2;
+                            clipboard = this.state.content;
                             navigator.clipboard.writeText(clipboard);
                         }}
                     >
@@ -79,7 +81,7 @@ export default class EditorDemo extends Component<any, any> {
                     </div>
                     <textarea id="title"
                         placeholder="Title"
-                        className="writeInput"
+                        className="single-post-title writeInput"
                         value={this.state.name}
                         onChange={this.handleChange} />
                     <Editor
@@ -87,26 +89,26 @@ export default class EditorDemo extends Component<any, any> {
                         placeholder="Type something..."
                         headerTemplate={header}
                         // theme = {this.theme}
-                        value={this.state.text2}
+                        value={this.state.content}
                         // onTextChange={(e) => this.setState({
-                        //     text2: e.htmlValue
+                        //     content: e.htmlValue
                         // })}
                         // make  an event onTextChange if text 2 is change and replace <script> to <p><script></p>
                         onTextChange={(e) => this.setState({
-                            text2: e.htmlValue?.replace(/<script>/g, "<p><script></p>")
+                            content: e.htmlValue
                         })}
                     />
                     <div className="border" id="scroll" ></div>
                     <div onClick={scrollToDiv}>Go home</div>
-                    {/* <p id="raw" style={{ width: "70vw", margin: "auto" }}> {this.state.text2 || 'empty'}</p> */}
-                    <p id="raw" style={{ width: "70vw", margin: "auto" }}> {this.state.text2 || 'empty'}</p>
+                    {/* <p id="raw" style={{ width: "70vw", margin: "auto" }}> {this.state.content || 'empty'}</p> */}
+                    <p id="raw" style={{ width: "70vw", margin: "auto" }}> {this.state.content || 'empty'}</p>
                     <div>
                         <div className="border"></div>
                         <h1 className="writeInput" >{this.state.name}</h1>
-                        <section className="BlogStyle" dangerouslySetInnerHTML={{ __html: this.state.text2 }}></section>
+                        <section className="BlogStyle" dangerouslySetInnerHTML={{ __html: this.state.content }}></section>
                     </div>
                     <div onClick={scrollToDiv}>Go home</div>
-                    <Button label="Clear" icon="pi pi-times" onClick={() => this.setState({ text2: '' })} />
+                    <Button label="Clear" icon="pi pi-times" onClick={() => this.setState({ content: '' })} />
                 </div>
             </div>
         );

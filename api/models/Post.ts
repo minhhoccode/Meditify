@@ -13,6 +13,9 @@ const PostSchema = new mongoose.Schema(
     photo: {
       type: String,
     },
+    photofit:{
+      type: String,
+    },
     username: {
       type: String,
       required: true,
@@ -22,6 +25,7 @@ const PostSchema = new mongoose.Schema(
     },
     thread: {
       type: String,
+      default: "Chia sẻ kiến thức",
       required: true,
     },
     likes: {

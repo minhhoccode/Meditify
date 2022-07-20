@@ -5,70 +5,97 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Slider from "@material-ui/core/Slider";
 
+
 export default function Write() {
   var theme: string = "bubble";
   var first: boolean = true;
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState("");
   const scrollTo = (ref: any) => {
     if (ref && ref.current /* + other conditions */) {
       ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
+  const [fit, setFit] = useState("");
+  var objPos: string = "center 0%";
+
   const user = useSelector((state: any) => state.user);
   const EditorRef = useRef<any>(null);
   var title: string, content: string;
-  useLayoutEffect(() => {
-    if (EditorRef.current !== null) {
-      content = EditorRef.current.state.text2;
-      title = EditorRef.current.state.name;
-    }
-  }, []);
-
   const [selectedImage, setSelectedImage] = useState();
   const imageChange = (e: any) => {
     if (e.target.files && e.target.files.length > 0) {
       setSelectedImage(e.target.files[0]);
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = function () {
+        var img:any = document.getElementById("writeImg");
+        if(img)
+          img.src = reader.result as string;
+        console.log(reader.result);
+        setImages(reader.result as string);
+      };
+      reader.onerror = function (error) {
+        console.log("Error: ", error);
+      };
     }
   };
+
+  const getEditor = (data : any) =>{
+      title = data.name;
+      content = data.content;
+  }
 
   const removeSelectedImage = () => {
     setSelectedImage(undefined);
   };
+
+
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const newPost = {
       username: user.username,
       title: title,
-      desc: "",
       photo: "",
+      photofit: fit,
       content: content,
     };
-    if (images.length > 0) {
-      const data = new FormData();
-      const filename = Date.now() + "";
-      data.append("name", filename);
-      data.append("file", images[0]);
-      newPost.photo = filename;
-      try {
-        await axios.post("/upload", data);
-      } catch (err) { }
-    }
+    console.log(newPost);
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await axios.post("/api/post", newPost);
+      if(selectedImage){
+        const formData = new FormData();
+        formData.append("img", images);
+        formData.append("post_id", res.data._id);
+        console.log(formData);
+        const res2 = {
+          "img" : images,
+          "post_id" : res.data._id
+        }
+        try{
+          await axios.post("/api/imagecover", res2);
+        }
+        catch(err){
+          console.log(err);
+        }
+      }
+
       window.location.replace("/post/" + res.data._id);
-    } catch (err) { }
+    } catch (err) {
+      console.log(err);
+    }
   };
-  const state = {
-    img: "",
-  };
-  const [fit, setFit] = useState('');
-  var objPos: string = "center 0%";
+
   return (
-    <div className="write" style={selectedImage ? { marginTop: "60px" } : { marginTop: "150px" }}>
-      <form action="" className="writeForm">
-        <input type="file" name="user[image]"
+    <div
+      className="write"
+      style={selectedImage ? { marginTop: "60px" } : { marginTop: "150px" }}
+    >
+      <form action="" className="writeForm" onSubmit={handleSubmit}>
+        <input
+          type="file"
+          name="user[image]"
           accept="image/*"
           onChange={imageChange}
           id="cover-img"
@@ -78,21 +105,19 @@ export default function Write() {
         {selectedImage && (
           <div>
             <img
-              src={URL.createObjectURL(selectedImage)}
+
               alt="Thumb"
               style={{ objectPosition: fit }}
               className="writeImg"
+              id="writeImg"
             />
             <button onClick={removeSelectedImage}>Remove cover</button>
             <br />
-
           </div>
-
         )}
         {/* <form action="" className="writeForm"> */}
 
         <div className="writeFormGroup">
-
           {/* <textarea
               placeholder="write something..."
               className="writeTextarea"
@@ -103,11 +128,13 @@ export default function Write() {
               onChange={(e, val) => {
                 objPos = "center " + val + "%";
                 setFit(objPos);
+                // console.log(images);
               }}
               aria-label="Small"
               valueLabelDisplay="auto"
-            />)
-          }
+              style={{ maxWidth: "98%" }}
+            />
+          )}
           {!selectedImage && (
             <label htmlFor="cover-img">
               <i className="fa-solid fa-image"></i>
@@ -115,8 +142,9 @@ export default function Write() {
             </label>
           )}
 
-
-          <Editor theme={theme} ref={EditorRef} />
+          <Editor theme={theme} ref={EditorRef} 
+                  getData = {getEditor}
+          />
           {/* <EditorNotion /> */}
           {/* <Editor
               editorState={editorState}
@@ -125,12 +153,11 @@ export default function Write() {
               editorClassName="editorClassName"
               onEditorStateChange={this.onEditorStateChange}
             />; */}
-
         </div>
-        <button className="writeSubmit" onSubmit={handleSubmit}>
+        <button className="writeSubmit" type="submit">
           Publish
         </button>
       </form>
-    </div >
+    </div>
   );
 }

@@ -38,20 +38,23 @@
   color: #555;
 }
 .writeInput {
-  width:calc(100vw - 240px);
-  resize: vertical;
+  width:calc(100% - 20px);
+  // resize: vertical;
+  resize: none;
+  height: auto;
+  overflow-y:hidden;
   box-sizing: border-box;
   word-wrap: break-word;
   white-space: pre-wrap;
   margin-top: 20px;
   border: none;
   // overflow-y: visible;
-  font-size: 26px;
   font-weight: bold;
   margin: 0 40px;
   // width: 100%;
   margin-bottom: 23px;
 }
+
 .ImagePlace {
   height: 260px;
 }
