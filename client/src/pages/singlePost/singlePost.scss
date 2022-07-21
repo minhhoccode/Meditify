@@ -1,6 +1,12 @@
 //import var.scss
 @import "../../components/variables.scss";
 
+
+
+::-webkit-scrollbar {
+  color: #000;
+}
+
 .single-post {
   margin-top: 60px;
 }
@@ -33,6 +39,8 @@ p {
 }
 .single-post-tag {
   color: rgba(var(--gray-800), 1);
+  outline: none;
+  border: none;
 }
 
 .single-post-title {

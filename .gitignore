@@ -2,4 +2,4 @@ don'tknow.md
 api/.env
 api/.md
 editorbubble.scss
-editor.scss
+client/editor.scss

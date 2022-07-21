@@ -2,7 +2,6 @@ const router = require("express").Router();
 import { Request, Response } from "express";
 const ImageCover = require("../models/ImageCover");
 
-
 // create image
 router.post("/", async (req: Request, res: Response) => {
   const newImageC = new ImageCover(req.body);
@@ -14,30 +13,22 @@ router.post("/", async (req: Request, res: Response) => {
   }
 });
 // update image
-router.put("/:id", async (req: Request, res: Response) => {
+router.put("/", async (req: Request, res: Response) => {
   try {
-    const imageC = await ImageCover.findById(req.params.id);
-    if (imageC.username === req.body.username) {
+    // console.log(req.body);
+    const imageC = await ImageCover.findOne({ post_id: req.body.post_id });
+    // console.log(imageC);
       try {
-        const updatedImageC = await ImageCover.findByIdAndUpdate(
-          req.params.id,
-          {
-            $set: req.body,
-          },
-          { new: true }
-        );
-        return res.status(200).json(updatedImageC);
+        imageC.img = req.body.img;
+        await imageC.save();
+        return res.status(200).json(imageC);
       } catch (err) {
         return res.status(500).json(err);
       }
-    } else {
-      return res
-        .status(401)
-        .json("Bạn chỉ được quyền cập nhật bài viết của chính mình :Đ");
-    }
-  } catch (err) {
+    } 
+  catch (err) {
     return res.status(500).json(err);
   }
-})
+});
 
 module.exports = router;

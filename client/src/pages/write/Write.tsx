@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Slider from "@material-ui/core/Slider";
 
-
 export default function Write() {
   var theme: string = "bubble";
   var first: boolean = true;
@@ -19,6 +18,13 @@ export default function Write() {
   const [fit, setFit] = useState("");
   var objPos: string = "center 0%";
 
+  document.querySelectorAll(".ql-picker").forEach((tool) => {
+    tool.addEventListener("mousedown", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+  });
+
   const user = useSelector((state: any) => state.user);
   const EditorRef = useRef<any>(null);
   var title: string, content: string;
@@ -29,10 +35,9 @@ export default function Write() {
       let reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = function () {
-        var img:any = document.getElementById("writeImg");
-        if(img)
-          img.src = reader.result as string;
-        console.log(reader.result);
+        var img: any = document.getElementById("writeImg");
+        if (img) img.src = reader.result as string;
+        // console.log(reader.result);
         setImages(reader.result as string);
       };
       reader.onerror = function (error) {
@@ -41,16 +46,14 @@ export default function Write() {
     }
   };
 
-  const getEditor = (data : any) =>{
-      title = data.name;
-      content = data.content;
-  }
+  const getEditor = (data: any) => {
+    title = data.name;
+    content = data.content;
+  };
 
   const removeSelectedImage = () => {
     setSelectedImage(undefined);
   };
-
-
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -64,19 +67,14 @@ export default function Write() {
     console.log(newPost);
     try {
       const res = await axios.post("/api/post", newPost);
-      if(selectedImage){
-        const formData = new FormData();
-        formData.append("img", images);
-        formData.append("post_id", res.data._id);
-        console.log(formData);
+      if (selectedImage) {
         const res2 = {
-          "img" : images,
-          "post_id" : res.data._id
-        }
-        try{
+          img: images,
+          post_id: res.data._id,
+        };
+        try {
           await axios.post("/api/imagecover", res2);
-        }
-        catch(err){
+        } catch (err) {
           console.log(err);
         }
       }
@@ -105,7 +103,6 @@ export default function Write() {
         {selectedImage && (
           <div>
             <img
-
               alt="Thumb"
               style={{ objectPosition: fit }}
               className="writeImg"
@@ -118,6 +115,18 @@ export default function Write() {
         {/* <form action="" className="writeForm"> */}
 
         <div className="writeFormGroup">
+          <select
+            className="single-post-tag"
+            onChange={(e: any) => {
+              setFit(e.target.value);
+            }}
+          >
+            <option value="Chia sẻ kiến thức">Chia sẻ kiến thức</option>
+            <option value="Chuyện trò - tâm sự">Chuyện trò - tâm sự</option>
+            <option value="Thắc mắc">Thắc mắc</option>
+            <option value="Thảo luận - tranh luận">Thảo luận - tranh luận</option>
+          </select>
+          <br />
           {/* <textarea
               placeholder="write something..."
               className="writeTextarea"
@@ -142,17 +151,7 @@ export default function Write() {
             </label>
           )}
 
-          <Editor theme={theme} ref={EditorRef} 
-                  getData = {getEditor}
-          />
-          {/* <EditorNotion /> */}
-          {/* <Editor
-              editorState={editorState}
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName"
-              onEditorStateChange={this.onEditorStateChange}
-            />; */}
+          <Editor theme={theme} ref={EditorRef} getData={getEditor} />
         </div>
         <button className="writeSubmit" type="submit">
           Publish

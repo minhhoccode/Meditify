@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
-import { Editor } from "primereact/editor";
+// @ts-ignore
+import { Editor } from "../../components/QuillEditor";
 import { Button } from "primereact/button";
 import "../../../editor.scss";
 import "./editor.scss";
@@ -17,7 +18,7 @@ export default class EditorDemo extends Component<any, any> {
         };
 
     }
-    
+
     handleChange = (e: any) => {
         this.setState({
             name: e.target.value
@@ -66,7 +67,7 @@ export default class EditorDemo extends Component<any, any> {
         var clipboard: string;
         return (
             <div id="editor">
-                <a className="nav-link" id="head" onClick={scrollToTestDiv} style={{ top: "50px" }}> Preview? </a>
+                {/* <a className="nav-link" id="head" onClick={scrollToTestDiv} style={{ top: "50px" }}> Preview? </a> */}
                 <div className="content-section introduction">
                 </div>
 
@@ -94,7 +95,7 @@ export default class EditorDemo extends Component<any, any> {
                         //     content: e.htmlValue
                         // })}
                         // make  an event onTextChange if text 2 is change and replace <script> to <p><script></p>
-                        onTextChange={(e) => this.setState({
+                        onTextChange={(e : any) => this.setState({
                             content: e.htmlValue
                         })}
                     />

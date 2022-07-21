@@ -8,6 +8,7 @@ import Setting from "./pages/setting/setting";
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import NotFound from "./pages/404/NotFound";
+import CreatePost from "./pages/CreatePost/CreatePost";
 import Footer from "./components/footer/Footer";
 // import Blog from "./pages/editor/Blog";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
@@ -34,6 +35,7 @@ function App() {
           {/* <Route path="/post/:id" element = {<SinglePage/>} /> */}
           <Route path="/post/:id" element = {<SinglePage/>} />
           <Route path="/write" element = {currentUser ? <Write /> : <Login />} />
+          <Route path="/createpost" element = {currentUser ? <CreatePost /> : <Login />} />
           <Route path="/settings" element = {currentUser ? <Setting /> : <Login />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>
