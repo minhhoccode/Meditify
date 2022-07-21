@@ -10,9 +10,9 @@
 
 * Main Feature
   * Register, Login, Logout
-  * Create Post
+  * Create Post, Edit post
   * Search Post by tags, author
 * Future Main Feature
-  * Edit post
   * Edit account
   * Upvote, comments
+  * Custom styling css for any user to read
