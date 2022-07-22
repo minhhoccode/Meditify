@@ -10,7 +10,7 @@
 
 * Main Feature
   * Register, Login, Logout
-  * Create Post, Edit post
+  * Create Post, Edit post, Delete post
   * Search Post by tags, author
 * Future Main Feature
   * Edit account
