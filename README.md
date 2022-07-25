@@ -1,4 +1,8 @@
-# A website inspired by Medium and Spiderum
+# Meditify
+
+A blog platform inspired by Medium and Spiderum
+
+
 ## Home Page
 ![image](https://user-images.githubusercontent.com/90856792/179819383-696e8675-ea30-4e4a-ad60-063c92d0b753.png)
 ## Reading Place
